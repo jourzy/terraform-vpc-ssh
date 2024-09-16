@@ -26,8 +26,6 @@ resource "aws_instance" "this" {
   subnet_id = aws_subnet.this.id
 
   tags = {
-
-    Name = "${var.instance_tag[count.index]}"
-    # Name = "EC2 ${var.instance_tag[count.index]}"
+    Name = "EC2-${count.index + 1}"
   }
 }
