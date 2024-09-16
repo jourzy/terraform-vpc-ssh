@@ -18,7 +18,13 @@ Remove all permissions apart from emmanora@hotmail.com
 
 Save file in .ssh folder in home: ~/.ssh
 
+To SSH into instance
+
+ssh -i /path/key-pair-name.pem instance-user-name@instance-public-dns-name
+
+For a Ubuntu AMI, the user name is ubuntu
 
 
+sudo ssh -i ~/.ssh/public.pem ubuntu@ec2-18-175-137-28.eu-west-2.compute.amazonaws.com
 
 
