@@ -27,4 +27,7 @@ For a Ubuntu AMI, the user name is ubuntu
 
 sudo ssh -i ~/.ssh/public.pem ubuntu@ec2-18-175-137-28.eu-west-2.compute.amazonaws.com
 
+To disconnect from ssh:
+exit
+
 
