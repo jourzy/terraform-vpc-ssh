@@ -1,2 +1,24 @@
 https://medium.com/@akilblanchard09/creating-aws-ec2-instances-with-ssh-access-using-terraform-f9c3c2996cbd
 
+aws ec2 describe-key-pairs --key-names key-pair-name
+
+aws ec2 describe-key-pairs --key-names public
+
+Retrive public key material from the private key:
+
+ssh-keygen -y -f /path_to_key_pair/my-key-pair.pem
+>>> ssh-keygen -y -f ~/.ssh/public.pem
+
+Making .pem file secure
+
+IN wondows right click file
+properties > security > advanced
+Disable inheritance (make explicit)
+Remove all permissions apart from emmanora@hotmail.com
+
+Save file in .ssh folder in home: ~/.ssh
+
+
+
+
+
