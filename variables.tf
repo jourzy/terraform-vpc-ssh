@@ -20,21 +20,26 @@ variable "instance_tag" {
 variable "counter" {
   description = "Number of instances to launch"
   type        = number
+  default     = 1
 }
 
+// default     = "public.pem"
 variable "file_name" {
   description = "Name of the key pair"
   type        = string
+  default     = "public.pem"
 }
 
 // default       = "10.0.0.0/16"
 variable "cidr_block" {
   description = "CIDR Block"
-  type = string
+  type        = string
+  default     = "10.0.0.0/16"
 }
 
 // eu-west-2a
 variable "availability_zone"{
   description = "Availability Zones for the Subnet"
-  type = string
+  type        = string
+  default     = "eu-west-2a"
 }
