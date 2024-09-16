@@ -14,7 +14,8 @@ variable "instance_type" {
 
 variable "instance_tag" {
   description = "Tag given to each deployed Instance"
-  type = string 
+  type        = string 
+  default     = "instance"
 }
 
 // default     = 1
