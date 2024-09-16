@@ -1,7 +1,8 @@
-// public.pem
+// default     = "ssh_key_pair"
 variable "key_pair_name" {
   description = "key_pair_name"
   type        = string
+  default     = "ssh_key_pair"
 }
 
 // default     = "t2.micro"
@@ -16,7 +17,7 @@ variable "instance_tag" {
   type = string 
 }
 
-
+// default     = 1
 variable "counter" {
   description = "Number of instances to launch"
   type        = number
