@@ -2,7 +2,7 @@
 variable "key_pair_name" {
   description = "key_pair_name"
   type        = string
-  default     = "ssh_key_pair"
+  default     = "public"
 }
 
 // default     = "t2.micro"
