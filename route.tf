@@ -8,7 +8,7 @@ resource "aws_route_table" "second" {
  }
  
  tags = {
-   Name = "2nd Route Table"
+   Name = "SSH_2nd"
  }
 }
 

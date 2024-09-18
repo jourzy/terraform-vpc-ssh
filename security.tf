@@ -1,5 +1,5 @@
 resource "aws_security_group" "this" {
-  name        = "allow-all"
+  name        = "SSH"
   description = "Security group allowing SSH and all egress traffic"
   vpc_id      = aws_vpc.this.id
 

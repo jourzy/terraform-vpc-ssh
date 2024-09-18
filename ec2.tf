@@ -26,6 +26,6 @@ resource "aws_instance" "this" {
   subnet_id = aws_subnet.this.id
 
   tags = {
-    Name = "EC2-${count.index + 1}"
+    Name = "SSH-${count.index + 1}"
   }
 }

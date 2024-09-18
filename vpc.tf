@@ -4,6 +4,6 @@ resource "aws_vpc" "this" {
   enable_dns_support   = true
   
   tags = {
-    Name = "ssh_vpc"
+    Name = "SSH"
   }
 }
