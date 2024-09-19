@@ -18,6 +18,8 @@ Remove all permissions apart from emmanora@hotmail.com
 
 Save file in .ssh folder in home: ~/.ssh
 
+sudo chmod 400 filename.pem
+
 To SSH into instance
 
 ssh -i /path/key-pair-name.pem instance-user-name@instance-public-dns-name
@@ -26,6 +28,9 @@ For a Ubuntu AMI, the user name is ubuntu
 
 
 sudo ssh -i ~/.ssh/public.pem ubuntu@ec2-18-175-137-28.eu-west-2.compute.amazonaws.com
+sudo ssh -i ~/.ssh/public.pem ubuntu@35.178.210.157
+
+sudo ssh -i ~/.ssh/public.pem ubuntu@ec2-35-178-210-157.eu-west-2.compute.amazonaws.com
 
 To disconnect from ssh:
 exit
