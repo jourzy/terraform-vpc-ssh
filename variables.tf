@@ -33,10 +33,22 @@ variable "file_name" {
 }
 
 
-variable "cidr_block" {
+variable "cidr_block_vpc" {
   description = "CIDR Block"
   type        = string
   default     = "10.0.0.0/16"
+}
+
+variable "cidr_block_subnet_public" {
+  description = "CIDR Block"
+  type        = string
+  default     = "10.0.0.0/24"
+}
+
+variable "cidr_block_subnet_private" {
+  description = "CIDR Block"
+  type        = string
+  default     = "10.0.1.0/24"
 }
 
 
