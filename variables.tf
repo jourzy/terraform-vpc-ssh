@@ -34,22 +34,23 @@ variable "file_name" {
 
 
 variable "cidr_block_vpc" {
-  description = "CIDR Block"
+  description = "CIDR Block range for VPC"
   type        = string
   default     = "10.0.0.0/16"
 }
 
-variable "cidr_block_subnet_public" {
-  description = "CIDR Block"
-  type        = string
-  default     = "10.0.0.0/24"
+variable "cidr_blocks_subnet_public" {
+  description = "CIDR Blocks for public subnets"
+  type        = list(string)
+  default     = ["10.0.1.0/24", "10.0.2.0/24"]
 }
 
-variable "cidr_block_subnet_private" {
-  description = "CIDR Block"
-  type        = string
-  default     = "10.0.1.0/24"
+variable "cidr_blocks_subnet_private" {
+  description = "CIDR Blocks for private subnets"
+  type        = list(string)
+  default     = ["10.0.3.0/24", "10.0.4.0/24"]
 }
+
 
 
 variable "cidr_block_ingress" {
@@ -58,8 +59,8 @@ variable "cidr_block_ingress" {
 }
 
 
-variable "availability_zone"{
+variable "availability_zones"{
   description = "Availability Zones for the Subnet"
-  type        = string
-  default     = "eu-west-2a"
+  type        = list(string)
+  default     = ["eu-west-2a", "eu-west-2b"]
 }
