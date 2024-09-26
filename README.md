@@ -47,6 +47,9 @@ Deploy the resources in AWS using Terraform:
 
 ```terraform apply```
 
+You will be asked to enter a value for var.cidr_block_ingress.
+Enter the public IP address for the device you are using using CIDR block notation. It should be enclosed in quotation marks and square brackets. E.g. ```["181.23.51.142/32"]``` where 181.23.51.142 is your ip address.
+
 Type ```yes``` when prompted to confirm the changes.
 
 **6. Verify the infrastructure**
@@ -64,7 +67,7 @@ Confirm with ```yes``` when prompted.
 
 ## Notes
 
-- Update the public IP in the security group (security.tf line 11) to your current IP.
+- Update the public IP in the security group (security.tf line 12) to your current IP.
 - Ensure your SSH key pair name is set correctly to enable SSH access to the EC2 instances (variables.tf - variable "key_pair_name").
 
 
