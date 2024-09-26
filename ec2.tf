@@ -23,7 +23,7 @@ resource "aws_instance" "this" {
   vpc_security_group_ids          = ["${aws_security_group.this.id}"]
   associate_public_ip_address = true
 
-  subnet_id = aws_subnet.this.id
+  subnet_id = aws_subnet.public.id
 
   tags = {
     Name = "SSH-${count.index + 1}"

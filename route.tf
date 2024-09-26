@@ -13,6 +13,6 @@ resource "aws_route_table" "second" {
 }
 
 resource "aws_route_table_association" "this" {
-  subnet_id      = aws_subnet.this.id
+  subnet_id      = aws_subnet.public.id
   route_table_id = aws_route_table.second.id
 }
