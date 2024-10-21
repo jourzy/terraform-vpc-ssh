@@ -18,5 +18,5 @@ resource "aws_nat_gateway" "nat" {
 
 // Allocate an Elastic IP (EIP) for the NAT gateway
 resource "aws_eip" "nat" {
-  vpc = true
+  domain = "vpc"
 }
