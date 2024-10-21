@@ -15,15 +15,15 @@ data "aws_ami" "ubuntu" {
   
 }
 
-resource "aws_instance" "public" {
-  count                       = length(aws_subnet.public)
+resource "aws_instance" "private" {
+  count                       = length(aws_subnet.private)
   ami                         = data.aws_ami.ubuntu.id
   instance_type               = var.instance_type
   key_name                    = var.key_pair_name
   vpc_security_group_ids      = ["${aws_security_group.main.id}"]
-  associate_public_ip_address = true
+  associate_public_ip_address = false
   
-  subnet_id                   = element(aws_subnet.public[*].id, count.index)
+  subnet_id                   = element(aws_subnet.private[*].id, count.index)
 
   tags = {
     Name = "SSH-${count.index + 1}"
