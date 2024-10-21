@@ -1,7 +1,7 @@
-resource "aws_security_group" "this" {
+resource "aws_security_group" "main" {
   name        = "SSH"
   description = "Security group allowing SSH and all egress traffic"
-  vpc_id      = aws_vpc.this.id
+  vpc_id      = aws_vpc.main.id
 
   ingress {
     description = "Allow SSH"
@@ -23,9 +23,9 @@ resource "aws_security_group" "this" {
   }
 
   tags = {
-    Name = "allow-all"
+    Name = "allow-ssh"
   }
-} 
+}
 
 
 
