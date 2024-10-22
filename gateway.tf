@@ -12,11 +12,12 @@ vpc_id = aws_vpc.main.id
 resource "aws_nat_gateway" "nat" {
   count         = length(aws_subnet.public)
 
-  allocation_id = aws_eip.nat.id
+  allocation_id = aws_eip.nat[count.index].id   # Use a unique EIP for each NAT gateway
   subnet_id     = element(aws_subnet.public[*].id, count.index)  # Place the NAT gateway in the public subnets
 }
 
-// Allocate an Elastic IP (EIP) for the NAT gateway
+// Allocate an Elastic IP (EIP) - one for each NAT gateway
 resource "aws_eip" "nat" {
+  count  = length(aws_subnet.public)
   domain = "vpc"
 }
