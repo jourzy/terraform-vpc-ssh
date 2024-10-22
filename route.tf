@@ -23,11 +23,12 @@ resource "aws_route_table_association" "public" {
 
 # route table for private subnets
 resource "aws_route_table" "private" {
+  count  = length(aws_nat_gateway.nat)
   vpc_id = aws_vpc.main.id
 
   route {
     cidr_block     = "0.0.0.0/0"
-    nat_gateway_id = aws_nat_gateway.nat.id  # Route through NAT
+    nat_gateway_id = element(aws_nat_gateway.nat[*].id, count.index)  # Route through NAT
   }
 
   tags = {
@@ -40,5 +41,5 @@ resource "aws_route_table" "private" {
 resource "aws_route_table_association" "private" {
   count          = length(aws_subnet.private)
   subnet_id      = element(aws_subnet.private[*].id, count.index)
-  route_table_id = aws_route_table.private.id
+  route_table_id = element(aws_route_table.private[*].id, count.index)
 }
