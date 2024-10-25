@@ -11,7 +11,7 @@ resource "aws_security_group" "private" {
     to_port     = 22
     protocol    = "tcp"
 
-    cidr_blocks = [aws_instance.bastion.private_ip]  # Bastion's private IP
+    cidr_blocks = ["${aws_instance.bastion.private_ip}/32"]  # Bastion's private IP with /32
   }
 
   
