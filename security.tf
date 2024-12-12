@@ -1,15 +1,17 @@
-resource "aws_security_group" "main" {
-  name        = "SSH"
-  description = "Security group allowing SSH and all egress traffic"
+resource "aws_security_group" "private" {
+  name        = "Security group for instances in private subnet"
+  description = "Allows ssh into private instances from bastion and all egress traffic"
   vpc_id      = aws_vpc.main.id
 
+
+  # Allow ssh from bastion host's private ip
   ingress {
-    description = "Allow SSH"
+    description = "Allow SSH from bastion host"
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
-    // replace variable with your own public ip address
-    cidr_blocks = var.cidr_block_ingress
+
+    cidr_blocks = ["${aws_instance.bastion.private_ip}/32"]  # Bastion's private IP with /32
   }
 
   
@@ -18,14 +20,45 @@ resource "aws_security_group" "main" {
     description = "Allow all outbound traffic"
     from_port   = 0
     to_port     = 0
-    protocol    = "-1"  # semantically equivalent to all ports
+    protocol    = "-1"  # semantically equivalent to all ports and procotols
     cidr_blocks = ["0.0.0.0/0"]
   }
 
   tags = {
-    Name = "allow-ssh"
+    Name = "Security group for instances in private subnet"
   }
 }
+
+
+resource "aws_security_group" "public" {
+  name        = "Security group for bastion in public subnet"
+  description = "Security group for bastion host allowing ssh access from my public ip adress and all egress traffic"
+  vpc_id      = aws_vpc.main.id
+
+
+  /* Ensure that the bastion host allows SSH access from your IP address 
+  or network by keeping the original ingress rule 
+  (which allows SSH from a specific CIDR block) 
+  in the bastion host's security group.*/
+  ingress {
+    description = "Allow SSH from your IP"
+    from_port   = 22
+    to_port     = 22
+    protocol    = "tcp"
+    # replace variable with your own public ip address
+    cidr_blocks = var.cidr_block_ingress
+
+  }
+
+  egress {
+    description = "Allow all outbound traffic"
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+}
+
 
 
 
